@@ -45,7 +45,7 @@ You will need:
     var PokerServerManagerPath = '/PokerServerManager/';
     ```
 
-3. Change this value to the path that you will be using for your poker server manager. (*This has only been tested using the same webserver for both the client and the poker server manager, putting in a full http:// path here is untested but may work*) Save your changes.
+3. Change this value to the path that you will be using for your poker server manager. *(This has only been tested using the same webserver for both the client and the poker server manager, putting in a full http:// path here is untested but may work.)* Save your changes.
 4. Publish the PokerWebClient project to a folder or virtual app in IIS. There is only HTML/JS/CSS in the client so there is no need to set anything up in IIS beyond the basics.
 5. Browse to where you published the website to make sure it loads correctly in your browser.
 
