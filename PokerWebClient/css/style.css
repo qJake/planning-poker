@@ -1,0 +1,319 @@
+﻿body
+{
+	font-family: Segoe UI, Trebuchet MS, Arial, Sans-Serif;
+	font-size: 13px;
+	color: #222;
+}
+
+button
+{
+	border: 1px solid #888;
+	background-color: #ccc;
+	color: #333;
+	padding: 7px 10px 5px 10px;
+	margin: 0 4px;
+}
+button:hover
+{
+	border: 1px solid #4E84FF;
+}
+button[disabled]
+{
+	opacity: 0.5;
+}
+button[disabled]:hover
+{
+	border: 1px solid #888;
+}
+button[disabled]:active
+{
+	border: 1px solid #888;
+	background-color: #ccc;
+}
+
+button i
+{
+	margin-right: 5px;
+}
+
+button:active
+{
+	border: 1px solid #555;
+	background-color: #aaa;
+}
+
+input, select
+{
+	border: 1px solid #888;
+	background-color: #FFF;
+	color: #333;
+	font-family: 'Segoe UI';
+	font-size: 1em;
+	padding: 1px;
+}
+input[disabled]
+{
+	background-color: #CCC;
+	color: #666;
+}
+input:focus
+{
+	background-color: #EEE;
+}
+
+h1, h2, h3
+{
+	font-family: 'Segoe UI Light', 'Segoe UI', Arial;
+	color: #222;
+	font-weight: lighter;
+	padding-top: 12px;
+	padding-bottom: 16px;
+}
+
+h1
+{
+	font-size: 2.8em;
+}
+
+h2
+{
+	font-size: 2.2em;
+}
+
+h3
+{
+	font-family: 'Segoe UI', Arial;
+	font-size: 1.75em;
+	padding-top: 16px;
+}
+
+p
+{
+	display: block;
+	margin: 1em 0;
+}
+
+em
+{
+	font-style: italic;
+}
+
+
+
+.lightbox
+{
+	z-index: 99998;
+	background-color: black;
+	opacity: 0.65;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	text-align: center;	
+}
+
+.lightOverlay
+{
+	z-index: 99999;
+	text-align: center;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -200px;
+	margin-left: -250px;
+	background-color: white;
+	border-radius: 8px;
+	width: 500px;
+	height: 400px;
+	padding: 15px;
+}
+
+.cardup, .carddown
+{
+	display: inline-block;
+	width: 75px;
+	border-radius: 4px;
+	margin: 8px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 30px;
+	font-weight: normal;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.carddown
+{
+	background-color: #555;
+	border: 1px solid #ccc;
+}
+
+.cardoutline
+{
+	opacity: 0.5;
+}
+
+.cardUndecided
+{
+	font-style: italic;
+}
+
+.cardup
+{
+	background-color: #ccc;
+	border: 1px solid #555;
+}
+
+.round .cardup:hover
+{
+	background-color: #ddd;
+	border: 1px solid #888;
+	cursor: pointer;
+}
+
+.cardName
+{
+	font-size: 0.9em;
+	text-align: center;
+	width: 100%;
+}
+
+.decision
+{
+	width: 98%;
+	background-color: #ddd;
+	padding: 8px;
+	font-size: 1.3em;
+}
+
+.votes
+{
+	margin-bottom: 15px;
+	background-color: #dedede;
+	min-height: 155px;
+}
+
+.voteContainer
+{
+	display: inline-block;
+	margin: 8px;
+}
+
+.voteContainer .card
+{
+	display: block;
+	margin: 5px auto;
+}
+
+.voteContainer-empty
+{
+	font-size: 1.3em;
+	font-style: italic;
+}
+
+.voteContainer-empty p
+{
+	display: inline-block;
+	margin: 70px;
+}
+
+#disconnected
+{
+	color: #D00;
+}
+
+#loginStatus
+{
+	margin-top: 180px;
+	font-size: 1.3em;
+}
+
+.menu
+{
+	width: 240px;
+	clear: none;
+	background-color: #ddd;
+	margin: 0;
+	padding: 0 15px;
+	position: fixed;
+	right: 0;
+	top: 0;
+	height: 100%;
+}
+
+.content
+{
+	padding: 0 270px 15px 15px;
+}
+
+#clientList
+{
+	margin-left: 25px;
+}
+
+#clientList p
+{
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: 22px;
+	font-family: 'Segoe UI Light', 'Segoe UI', Arial;
+	font-weight: lighter;
+	font-size: 1.2em;
+}
+
+#clientList p:before
+{
+	content: ' • ';
+}
+
+#rounds div.options
+{
+	padding: 6px;
+	background-color: #cdf;
+}
+
+#rounds .decision
+{
+	background-color: #cdf;
+}
+
+.separator
+{
+  text-align: center;
+  margin: 20px 0;
+}
+
+.separator hr
+{
+  height: 1px;
+  border: 0;
+  color: #ccc;
+  background-color: #ccc;
+  width: 90%
+}
+
+#rounds
+{
+  margin: 0 20px;
+}
+
+#adminMenu
+{
+	margin-left: 20px;
+}
+
+#adminMenu input,
+#adminMenu button
+{
+	margin: 5px 0;
+}
+
+.bottomSpacer
+{
+	min-height: 300px;
+}
+#clientOptions
+{
+	margin: 10px 20px;
+}

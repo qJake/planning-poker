@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Planning Poker</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="CardClient.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="css/baseline.css" />
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.css" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- Side menu -->
+<div class="menu">
+    <h2>Client List</h2>
+    <div id="clientList">
+    </div>
+    <div id="clientOptions">
+        <button id="swapSpectator"><i id="specIcon" class="icon-large"></i> <span id="swapSpectatorContent"></span></button>
+    </div>
+    <div class="admin">
+        <h2 id="adminMenuHeader">Admin Menu</h2>
+        <div id="adminMenu">
+            <button id="showNewRoundPanel"><i class="icon-plus icon-large"></i> New Round</button><br />
+            <button id="showCardOptions"><i class="icon-th-large icon-large"></i> Card Options</button><br />
+            <input type="checkbox" id="autoSort" /> <label for="autoSort">Auto-sort cards when flipped</label><br />
+        </div>
+    </div>
+</div>
+
+<!-- Overlays -->
+<div id="overlay">
+    <div id="lightbox" class="lightbox"></div>
+    <div id="overlayContent" class="lightOverlay">
+
+        <div id="loginForm">
+            <h2>Connect to Planning Poker Server</h2>
+            <p id="disconnected"></p>
+            <p>Select a server: <span id="serverListText"></span><select id="serverList"><option disabled="disabled" value="">Loading...</option></select> <button id="refreshServerList"><i class="icon-refresh icon-large"></i></button></p>
+            <p>Name: <input id="clientName" type="text" size="15" maxlength="15" /></p>
+            <p id="nameError">Name contains invalid characters. Not allowed: # : ? +</p>
+            <p><input type="checkbox" id="spectator" /> <label for="spectator">Spectator</label></p>
+            <p><button id="submitLogin"><i class="icon-circle-arrow-right icon-large"></i> Login</button></p>
+            <hr style="height: 1px; border: none; color: #aaa; background-color: #aaa;" />
+            <p>Admin Password: <input type="password" id="adminPass" size="15" maxlength="15" /></p>
+            <p><button id="submitAdminLogin"><i class="icon-lock icon-large"></i> Login as Admin</button></p>
+        </div>
+        <div id="loginStatus">
+            Connecting...
+        </div>
+
+    </div>
+</div>
+<div id="adminOverlay" class="admin">
+    <div id="adminLightbox" class="lightbox"></div>
+    <div id="adminOverlayContainer" class="lightOverlay">
+
+        <h2>Welcome, Admin!</h2>
+        <p>You have been granted admin priveleges.<br /><br />Enjoy your poker game!</p>
+        <p><button id="adminInfoClose" tabindex="50"><i class="icon-remove icon-large"></i> Close</button></p>
+
+    </div>
+</div>
+<div id="newRoundOverlay">
+    <div id="roundLightbox" class="lightbox"></div>
+    <div id="roundOverlay" class="lightOverlay">
+
+        <div id="roundForm">
+            <h2>Begin a New Round</h2>
+            <p>Title: <input id="roundTitle" type="text" size="30" tabindex="10" /></p>
+            <p>
+                <button id="cancelNewRound" tabindex="30"><i class="icon-remove icon-large"></i> Cancel</button>
+                <button id="newRound" tabindex="20"><i class="icon-ok icon-large"></i> <span style="font-weight: bold;">Begin</span></button>
+            </p>
+        </div>
+
+    </div>
+</div>
+<div id="cardChooserOverlay">
+    <div id="cardLightbox"  class="lightbox"></div>
+    <div id="cardOverlay" class="lightOverlay">
+
+        <div id="cardForm">
+            <h2>Card Deck Options</h2>
+            <p>Card set: <input id="cardSet" type="text" size="40" tabindex="70" /><br /><span style="font-style: italic;">Enter values separated by commas.</span></p>
+            <p>
+                <button id="cancelCardset" tabindex="90"><i class="icon-remove icon-large"></i> Cancel</button>
+                <button id="applyCardset" tabindex="80"><i class="icon-ok icon-large"></i> <span style="font-weight: bold;">Apply</span></button>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<!-- Main content -->
+<div class="content">
+    <h1>Planning Poker</h1>
+    <h2>Rounds</h2>
+
+    <!-- Any game state updates get populated inside this container. -->
+    <div id="rounds">
+    </div>
+</div>
+
+</body>
+</html>

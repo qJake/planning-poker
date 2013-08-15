@@ -1,0 +1,79 @@
+﻿body
+{
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 11pt;
+  color: #333;
+}
+#header
+{
+  width: 100%;
+  background-color: #0033AA;
+  padding: 1em;
+  font-family: 'Segoe UI Light', Arial, sans-serif;
+  font-size: 16px;
+}
+h1
+{
+  color: white;
+  margin: 0;
+  font-weight: normal;
+}
+h2
+{
+  color: #333;
+  font-weight: normal;
+}
+#content
+{
+  padding: 1em;
+}
+.message
+{
+  padding: 0.6em;
+  width: 99%;
+  display: block;
+}
+.good
+{
+  border: 1px solid #157315;
+  background-color: #D6FCD6;
+  color: #157315;
+}
+.bad
+{
+  border: 1px solid #8F0000;
+  color: #8F0000;
+  background-color: #FFE3E3;
+}
+.indent
+{
+  padding-left: 2em;
+}
+.imageButton
+{
+  margin-bottom: -2px;
+  margin-right: 5px;
+}
+table, tr, td
+{
+	padding: 3px;
+	margin: 0;
+	border: 0;
+	background: none;
+}
+.Validation
+{
+  color: #CC0000;
+  padding-left: 1em;
+}
+.info
+{
+	font-size: 0.85em;
+	color: #888;
+}
+.label
+{
+	width: 100px;
+}
