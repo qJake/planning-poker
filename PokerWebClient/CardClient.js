@@ -4,6 +4,9 @@
     http://github.com/qjake/planning-poker
 */
 
+// Configure this to be wherever you put your poker server manager application at:
+var PokerServerManagerPath = '/PokerServerManager/';
+
 var socket = null;
 var clientName = null;
 var clientID = null;
@@ -255,7 +258,7 @@ function beginLoadServerList()
     $('#serverList').hide();
     $('#serverListText').show().html('Loading...');
     $.ajax({
-        url: '/PokerServerManager/ServerList.aspx',
+        url: PokerServerManagerPath + 'ServerList.aspx',
         dataType: 'json',
         success: function (d)
         {
