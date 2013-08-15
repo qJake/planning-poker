@@ -14,7 +14,7 @@ The client is a web-based Javascript/WebSocket client that communicates using JS
 
 #### Server
 
-The server is a .NET console application that uses the @statianzo/Fleck library for hosting the WebSocket server, and [Json.NET](http://james.newtonking.com/pages/json-net.aspx) for parsing the JSON messages.
+The server is a .NET console application that uses the [statianzo/Fleck](https://github.com/statianzo/Fleck) library for hosting the WebSocket server, and [Json.NET](http://james.newtonking.com/pages/json-net.aspx) for parsing the JSON messages.
 
 #### Server Manager
 
