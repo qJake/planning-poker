@@ -8,28 +8,57 @@ using Newtonsoft.Json.Linq;
 
 namespace WebSocketServer
 {
+    /// <summary>
+    /// Represents a single client connected to the game server. This class also handles the send/receive for the web socket connection.
+    /// </summary>
     public class Client : IDisposable
     {
-        public WebSocketConnection conn;
-        public CardServer server;
-        public Type serverType;
+        /// <summary>
+        /// Gets the underlying web socket connection.
+        /// </summary>
+        public WebSocketConnection conn { get; private set; }
 
-        public ClientInfo Info;
+        /// <summary>
+        /// Gets the card server that this client is associated with.
+        /// </summary>
+        public CardServer server { get; private set; }
 
+        /// <summary>
+        /// The type of this instance of this class (cached for performance).
+        /// </summary>
+        private Type thisType;
+
+        /// <summary>
+        /// Gets information about this client (name, ID, etc).
+        /// </summary>
+        public ClientInfo Info { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the Client class with the specified game server and underlying web socket connection.
+        /// </summary>
+        /// <param name="parent">The game server that this client is connected to.</param>
+        /// <param name="connection">The underlying web socket connection that is associated with this client.</param>
         public Client(CardServer parent, WebSocketConnection connection)
         {
             Info = new ClientInfo();
             server = parent;
-            serverType = this.GetType();
+            thisType = this.GetType();
+
             conn = connection;
+
+            // Web socket event hookup (not really events).
             conn.OnMessage = ReceiveMessage;
             conn.OnOpen = Connected;
             conn.OnClose = Disconnected;
+
             Info.ID = Guid.NewGuid().ToString();
         }
 
         #region Client Methods
 
+        /// <summary>
+        /// Event handler method for the "OnOpen" event from the web socket.
+        /// </summary>
         private void Connected()
         {
 #if DEBUG
@@ -37,6 +66,9 @@ namespace WebSocketServer
 #endif
         }
 
+        /// <summary>
+        /// Event handler method for the "OnClose" event from the web socket.
+        /// </summary>
         private void Disconnected()
         {
 #if DEBUG
@@ -46,6 +78,10 @@ namespace WebSocketServer
             server.BroadcastClientList();
         }
 
+        /// <summary>
+        /// Event handler method for the "OnMessage" event from the web socket.
+        /// </summary>
+        /// <param name="message">The message received from the browser/client.</param>
         private void ReceiveMessage(string message)
         {
 #if DEBUG
@@ -53,6 +89,8 @@ namespace WebSocketServer
 #endif
 
             ServerRequestInfo request = null;
+
+            // Ensure the message is a JSON message.
             try
             {
                 request = JsonConvert.DeserializeObject<ServerRequestInfo>(message);
@@ -63,7 +101,8 @@ namespace WebSocketServer
                 return;
             }
 
-            MethodInfo method = serverType.GetMethods().DefaultIfEmpty(null).Where(m => m.Name.ToUpper() == request.MethodName.ToUpper()).SingleOrDefault();
+            // Attempt to find a valid method in this class to invoke.
+            MethodInfo method = thisType.GetMethods().DefaultIfEmpty(null).Where(m => m.Name.ToUpper() == request.MethodName.ToUpper()).SingleOrDefault();
             if (method != null && method.GetCustomAttributes(false).Where(a => a is WebSocketSecurityCallAttribute).Count() > 0)
             {
                 if (server.Admins.Contains(this))
@@ -88,6 +127,11 @@ namespace WebSocketServer
             }
         }
 
+        /// <summary>
+        /// Sends a message through the underlying web socket connection to the browser/client.
+        /// </summary>
+        /// <param name="command">The command to send.</param>
+        /// <param name="parameters">The parameters to include with the command.</param>
         public void SendMessage(string command, params JProperty[] parameters)
         {
             if (conn.Socket.Connected)
@@ -96,6 +140,11 @@ namespace WebSocketServer
             }
         }
 
+        /// <summary>
+        /// Sends an error through the underlying web socket connection to the browser/client.
+        /// </summary>
+        /// <param name="source">The source of the error.</param>
+        /// <param name="message">The error message.</param>
         public void SendError(string source, string message)
         {
             if (conn.Socket.Connected)
@@ -108,6 +157,11 @@ namespace WebSocketServer
 
         #region Socket Calls
 
+        /// <summary>
+        /// Registers this client with the game server.
+        /// </summary>
+        /// <param name="name">The friendly name of the client.</param>
+        /// <param name="spectator">Whether or not this client is initially a spectator or not (they can toggle this after connecting).</param>
         [WebSocketCall]
         public void RegisterClient(string name, string spectator)
         {
@@ -125,6 +179,9 @@ namespace WebSocketServer
             SendMessage("GameState", new JProperty("Data", server.GetRoundState()));
         }
 
+        /// <summary>
+        /// Swaps the spectator flag for this client, and updates any associated game logic accordingly.
+        /// </summary>
         [WebSocketCall]
         public void SwapSpectator()
         {
@@ -144,6 +201,10 @@ namespace WebSocketServer
             }
         }
 
+        /// <summary>
+        /// Attempts to register this client as a game admin with the specified password.
+        /// </summary>
+        /// <param name="pass">The user's attempted password.</param>
         [WebSocketCall]
         public void RegisterAdmin(string pass)
         {
@@ -159,6 +220,10 @@ namespace WebSocketServer
             }
         }
 
+        /// <summary>
+        /// Registers a vote with the game server from this client.
+        /// </summary>
+        /// <param name="vote">The card/vote to register.</param>
         [WebSocketCall]
         public void RegisterVote(string vote)
         {
@@ -172,6 +237,9 @@ namespace WebSocketServer
             }
         }
     
+        /// <summary>
+        /// Un-does a registered vote for this user for the active round.
+        /// </summary>
         [WebSocketCall]
         public void UndoVote()
         {
@@ -189,6 +257,10 @@ namespace WebSocketServer
 
         #region Admin Functions
 
+        /// <summary>
+        /// Starts a new round for the players.
+        /// </summary>
+        /// <param name="title">The title of the round.</param>
         [WebSocketSecurityCall]
         public void NewRoundRequest(string title)
         {
@@ -198,6 +270,9 @@ namespace WebSocketServer
             }
         }
 
+        /// <summary>
+        /// Finalizes the round by attempting to take the majority vote. If there is no clear majority, an error is returned.
+        /// </summary>
         [WebSocketSecurityCall]
         public void TakeMajority()
         {
@@ -218,6 +293,10 @@ namespace WebSocketServer
             server.BroadcastGameState();
         }
 
+        /// <summary>
+        /// Finalizes the current round with the specified vote/card.
+        /// </summary>
+        /// <param name="vote">The card to "accept" and finalize with (will be displayed to each player).</param>
         [WebSocketSecurityCall]
         public void FinalizeVote(string vote)
         {
@@ -236,6 +315,9 @@ namespace WebSocketServer
             server.BroadcastGameState();
         }
 
+        /// <summary>
+        /// Restarts the current round by discarding all votes and flipping the cards back over again.
+        /// </summary>
         [WebSocketSecurityCall]
         public void RestartRound()
         {
@@ -249,6 +331,9 @@ namespace WebSocketServer
             server.BroadcastGameState();
         }
 
+        /// <summary>
+        /// Flips the cards so that all players can see all cards. Users that did not vote will not appear in the list.
+        /// </summary>
         [WebSocketSecurityCall]
         public void FlipCards()
         {
@@ -262,12 +347,18 @@ namespace WebSocketServer
             server.BroadcastGameState();
         }
 
+        /// <summary>
+        /// Discards the current round completely.
+        /// </summary>
         [WebSocketSecurityCall]
         public void DiscardActiveRound()
         {
             server.DiscardActiveRound();
         }
 
+        /// <summary>
+        /// Sorts the results in numeric ascending order and updates each client with the new order.
+        /// </summary>
         [WebSocketSecurityCall]
         public void SortCards()
         {
@@ -281,12 +372,19 @@ namespace WebSocketServer
             }
         }
 
+        /// <summary>
+        /// Retrieves the stored card list on the server, so the user can edit it.
+        /// </summary>
         [WebSocketSecurityCall]
         public void GetCardList()
         {
             SendMessage("GetCardList", new JProperty("CardList", CardSet.Default.ToHumanString()));
         }
 
+        /// <summary>
+        /// Updates the current cardset with the new cards the user entered.
+        /// </summary>
+        /// <param name="newCards">The set of new cards to use, each separated by a comma.</param>
         [WebSocketSecurityCall]
         public void SetCards(string newCards)
         {
@@ -316,6 +414,11 @@ namespace WebSocketServer
             SendMessage("SetCards");
         }
 
+        /// <summary>
+        /// Sets the value of a global server setting.
+        /// </summary>
+        /// <param name="key">The key of the setting.</param>
+        /// <param name="value">The value to set.</param>
         [WebSocketSecurityCall]
         public void SetSetting(string key, string value)
         {
@@ -324,6 +427,9 @@ namespace WebSocketServer
 
         #endregion
 
+        /// <summary>
+        /// Closes the web socket connection and disposes of this client.
+        /// </summary>
         public void Dispose()
         {
             if (conn != null)
@@ -332,7 +438,7 @@ namespace WebSocketServer
                 conn = null;
             }
             server = null;
-            serverType = null;
+            thisType = null;
             Info = null;
         }
     }
