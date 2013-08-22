@@ -22,6 +22,26 @@ The server is a .NET console application that uses the [statianzo/Fleck](https:/
 
 The server manager is able to spin up instances of servers automatically using a clean web interface, allowing anyone with access to the page the ability to create their own planning poker server that will appear in the server list to each client. The server manager communicates with the individual servers using [named pipes](http://en.wikipedia.org/wiki/Named_pipe).
 
+## Screenshots
+
+### Connecting
+
+![Planning Poker Screenshot](https://raw.github.com/qJake/planning-poker/master/readme-resources/pp1.png)
+
+### Playing as an admin
+
+![Planning Poker Screenshot](https://raw.github.com/qJake/planning-poker/master/readme-resources/pp2.png)
+
+![Planning Poker Screenshot](https://raw.github.com/qJake/planning-poker/master/readme-resources/pp3.png)
+
+![Planning Poker Screenshot](https://raw.github.com/qJake/planning-poker/master/readme-resources/pp6.png)
+
+### Playing as a standard user
+
+![Planning Poker Screenshot](https://raw.github.com/qJake/planning-poker/master/readme-resources/pp4.png)
+
+![Planning Poker Screenshot](https://raw.github.com/qJake/planning-poker/master/readme-resources/pp5.png)
+
 ## Setup
 
 You will need:
