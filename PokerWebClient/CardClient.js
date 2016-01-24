@@ -35,6 +35,7 @@ $(function ()
 
     // Load server list
     beginLoadServerList();
+    beginLoadUserName();
 });
 
 function registerStaticEvents()
@@ -250,6 +251,24 @@ function RegisterDynamicEvents()
     {
         $('#sortCards').attr('disabled', 'disabled');
         send('SortCards');
+    });
+}
+
+function beginLoadUserName() {
+    $.ajax({
+        url: 'api/GetUserName.aspx',
+        dataType: 'json',
+        success: function (d) {
+            debugger;
+            if (d.userName !== null && d.userName !== "") {
+                clientName = d.userName;
+                $('#clientName').val(clientName);
+                $("#clientName").prop('disabled', true);
+            }
+        },
+        error: function (x, h, r) {
+            
+        }
     });
 }
 
