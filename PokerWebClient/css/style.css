@@ -55,6 +55,7 @@ input[disabled]
 {
 	background-color: #CCC;
 	color: #666;
+    border: 1px solid #ddd;
 }
 input:focus
 {
