@@ -14,7 +14,7 @@
     <RootNamespace>PokerWebClient</RootNamespace>
     <AssemblyName>PokerWebClient</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -67,6 +67,14 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\KYWADev02.pubxml" />
     <None Include="Properties\PublishProfiles\Local Deployment.pubxml" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -86,7 +94,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>20500</DevelopmentServerPort>
           <DevelopmentServerVPath>/Poker</DevelopmentServerVPath>
-          <IISUrl>http://localhost:28901/PokerWebClient</IISUrl>
+          <IISUrl>http://localhost/PokerWebClient</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

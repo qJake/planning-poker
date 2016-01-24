@@ -14,7 +14,7 @@
     <RootNamespace>PokerServerManager</RootNamespace>
     <AssemblyName>PokerServerManager</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -114,6 +114,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\KYWADev02.pubxml" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -130,7 +131,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>28971</DevelopmentServerPort>
           <DevelopmentServerVPath>/PokerServerManager</DevelopmentServerVPath>
-          <IISUrl>http://localhost:28900/PokerServerManager</IISUrl>
+          <IISUrl>http://localhost/PokerServerManager</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

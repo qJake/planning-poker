@@ -68,7 +68,7 @@ namespace WebSocketServer
         public void DecideVote(string card)
         {
             Decision = card;
-            Votes.Clear(); // Remove this to send all votes from previous rounds to the client (possibly for later display).
+            //Votes.Clear(); // Remove this to send all votes from previous rounds to the client (possibly for later display).
         }
 
         /// <summary>

@@ -5,7 +5,7 @@
 */
 
 // Configure this to be wherever you put your poker server manager application at:
-var PokerServerManagerPath = '/PokerServerManager/';
+var PokerServerManagerPath = 'http://localhost/PokerServerManager/';
 
 var socket = null;
 var clientName = null;
