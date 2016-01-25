@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 
-namespace WebSocketServerManager
+namespace PokerServerManager
 {
     public class ServerManager
     {

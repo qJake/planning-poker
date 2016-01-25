@@ -312,6 +312,7 @@ namespace WebSocketServer
             }
             SendMessage("FinalizeVote");
             server.ActiveRound.DecideVote(vote);
+            PokerServer.Utilities.Logger.WriteToLog(server.Rounds[server.Rounds.Count-1]);
             server.BroadcastGameState();
         }
 

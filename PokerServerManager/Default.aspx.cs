@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
-namespace WebSocketServerManager
+namespace PokerServerManager
 {
     public partial class _Default : System.Web.UI.Page
     {

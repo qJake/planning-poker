@@ -2,7 +2,7 @@
 using System.Text;
 using Newtonsoft.Json.Linq;
 
-namespace WebSocketServerManager
+namespace PokerServerManager
 {
     public partial class ServerList : System.Web.UI.Page
     {
