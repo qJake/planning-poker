@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebSocketServerManager
+namespace PokerServerManager
 {
     public class Global : System.Web.HttpApplication
     {

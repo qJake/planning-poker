@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebSocketServerManager
+namespace PokerServerManager
 {
 
 
