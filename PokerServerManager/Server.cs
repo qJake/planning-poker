@@ -1,5 +1,5 @@
 ﻿
-namespace WebSocketServerManager
+namespace PokerServerManager
 {
     public class Server
     {
