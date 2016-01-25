@@ -1,6 +1,6 @@
 # Planning Poker
 
-**Planning Poker** is an open-source browser-based .NET/C# planning poker card game implementation. The underlying communication protocol used between the client and the server is WebSockets.
+**Planning Poker** is an open-source browser-based .NET/C# planning poker card game app. The underlying communication protocol used between the client and the server is WebSockets.
 
 ### What is planning poker?
 
