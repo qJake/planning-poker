@@ -42,6 +42,14 @@ The server manager is able to spin up instances of servers automatically using a
 
 ![Planning Poker Screenshot](https://raw.github.com/qJake/planning-poker/master/readme-resources/pp5.png)
 
+## Caveats
+
+Planning Poker uses WebSockets as its underlying communication protocol. Specifically, it must be able to connect over the `ws://` protocol between ports 8000 and 9000.
+
+Currently, Planning Poker is not set up to run in SSL-only environments. The game client must be loaded over HTTP, so that the WebSocket connection can be made. This also allows multiple game sessions to exist at the same time (if SSL were supported, only one game would be able to run, since the `wss://` protocol must connect over port 443 exclusively).
+
+There are no plans to support HTTPS because of the way the game servers run on different ports.
+
 ## Setup
 
 You will need:
