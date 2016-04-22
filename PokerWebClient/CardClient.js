@@ -635,7 +635,7 @@ function updateView(data)
                 // If we haven't flipped yet, and this client has voted already, and we're not a spectator, add the option to undo your vote.
                 if (!e.Flipped && hasUserVoted(e.Votes, clientID) && !isSpectator)
                 {
-                    optionContainer.append('<button id="undoVote"><i class="fa fa-download-alt fa-large"></i> Undo Vote</button>');
+                    optionContainer.append('<button id="undoVote"><i class="fa fa-download-alt fa-lg"></i> Undo Vote</button>');
                     if (e.Votes.length == clientListCache.length)
                     {
                         optionContainer.find('#undoVote').attr('disabled', 'disabled');
@@ -648,15 +648,15 @@ function updateView(data)
                 // We haven't flipped yet, so add the option to flip the cards.
                 if (!e.Flipped)
                 {
-                    adminContainer.append('<button id="flipCards"><i class="fa fa-retweet fa-large"></i> Flip Cards</button>');
+                    adminContainer.append('<button id="flipCards"><i class="fa fa-retweet fa-lg"></i> Flip Cards</button>');
                 }
                 else
                 {
                     // Cards are flipped, present finalization options.
-                    adminContainer.append('<button id="sortCards"><i class="fa fa-signal fa-large"></i> Sort Cards</button> ' +
-                                            '<button id="takeMajority"><i class="fa fa-tasks fa-large"></i> Take Majority</button> ' +
-                                            'Enter Estimate: <input type="text" size="8" id="estOverride"></i> <button id="overrideEstimate"><i class="fa fa-chevron-right fa-large"></i> Go</button> ' +
-                                            '<button id="restartRound"><i class="fa fa-refresh fa-large"></i> Restart Round</button>');
+                    adminContainer.append('<button id="sortCards"><i class="fa fa-signal fa-lg"></i> Sort Cards</button> ' +
+                                            '<button id="takeMajority"><i class="fa fa-tasks fa-lg"></i> Take Majority</button> ' +
+                                            'Enter Estimate: <input type="text" size="8" id="estOverride"></i> <button id="overrideEstimate"><i class="fa fa-chevron-right fa-lg"></i> Go</button> ' +
+                                            '<button id="restartRound"><i class="fa fa-refresh fa-lg"></i> Restart Round</button>');
 
                     // If auto-sort is on, grey out the sort button because it's already been sorted.
                     // Actual auto-sort operation is handled server-side.
@@ -665,7 +665,7 @@ function updateView(data)
                         adminContainer.find('#sortCards').attr('disabled', 'disabled');
                     }
                 }
-                adminContainer.append('<button id="discardActiveRound"><i class="fa fa-trash fa-large"></i> Discard Round</button>');
+                adminContainer.append('<button id="discardActiveRound"><i class="fa fa-trash fa-lg"></i> Discard Round</button>');
 
                 optionContainer.append(adminContainer);
 

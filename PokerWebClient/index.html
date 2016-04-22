@@ -21,13 +21,13 @@
     <div id="clientList">
     </div>
     <div id="clientOptions">
-        <button id="swapSpectator"><i id="specIcon" class="fa fa-large"></i> <span id="swapSpectatorContent"></span></button>
+        <button id="swapSpectator"><i id="specIcon" class="fa fa-lg"></i> <span id="swapSpectatorContent"></span></button>
     </div>
     <div class="admin">
         <h2 id="adminMenuHeader">Admin Menu</h2>
         <div id="adminMenu">
-            <button id="showNewRoundPanel"><i class="fa fa-plus fa-large"></i> New Round</button><br />
-            <button id="showCardOptions"><i class="fa fa-th-large fa-large"></i> Card Options</button><br />
+            <button id="showNewRoundPanel"><i class="fa fa-plus fa-lg"></i> New Round</button><br />
+            <button id="showCardOptions"><i class="fa fa-th-large fa-lg"></i> Card Options</button><br />
             <input type="checkbox" id="autoSort" /> <label for="autoSort">Auto-sort cards when flipped</label><br />
         </div>
     </div>
@@ -41,14 +41,14 @@
         <div id="loginForm">
             <h2>Connect to Planning Poker Server</h2>
             <p id="disconnected"></p>
-            <p>Select a server: <span id="serverListText"></span><select id="serverList"><option disabled="disabled" value="">Loading...</option></select> <button id="refreshServerList"><i class="fa fa-refresh fa fa-large"></i></button></p>
+            <p>Select a server: <span id="serverListText"></span><select id="serverList"><option disabled="disabled" value="">Loading...</option></select> <button id="refreshServerList"><i class="fa fa-refresh fa fa-lg"></i></button></p>
             <p>Name: <input id="clientName" type="text" size="15" maxlength="15" /></p>
             <p id="nameError">Name contains invalid characters. Not allowed: # : ? +</p>
             <p><input type="checkbox" id="spectator" /> <label for="spectator">Spectator</label></p>
-            <p><button id="submitLogin"><i class="fa fa-circle-arrow-right fa-large"></i> Login</button></p>
+            <p><button id="submitLogin"><i class="fa fa-circle-arrow-right fa-lg"></i> Login</button></p>
             <hr style="height: 1px; border: none; color: #aaa; background-color: #aaa;" />
             <p>Admin Password: <input type="password" id="adminPass" size="15" maxlength="15" /></p>
-            <p><button id="submitAdminLogin"><i class="fa fa-lock fa-large"></i> Login as Admin</button></p>
+            <p><button id="submitAdminLogin"><i class="fa fa-lock fa-lg"></i> Login as Admin</button></p>
         </div>
         <div id="loginStatus">
             Connecting...
@@ -62,7 +62,7 @@
 
         <h2>Welcome, Admin!</h2>
         <p>You have been granted admin priveleges.<br /><br />Enjoy your poker game!</p>
-        <p><button id="adminInfoClose" tabindex="50"><i class="fa fa-remove fa-large"></i> Close</button></p>
+        <p><button id="adminInfoClose" tabindex="50"><i class="fa fa-remove fa-lg"></i> Close</button></p>
 
     </div>
 </div>
@@ -74,8 +74,8 @@
             <h2>Begin a New Round</h2>
             <p>Title: <input id="roundTitle" type="text" size="30" tabindex="10" /></p>
             <p>
-                <button id="cancelNewRound" tabindex="30"><i class="fa fa-remove fa-large"></i> Cancel</button>
-                <button id="newRound" tabindex="20"><i class="fa fa-ok fa-large"></i> <span style="font-weight: bold;">Begin</span></button>
+                <button id="cancelNewRound" tabindex="30"><i class="fa fa-remove fa-lg"></i> Cancel</button>
+                <button id="newRound" tabindex="20"><i class="fa fa-check fa-lg"></i> <span style="font-weight: bold;">Begin</span></button>
             </p>
         </div>
 
@@ -89,8 +89,8 @@
             <h2>Card Deck Options</h2>
             <p>Card set: <input id="cardSet" type="text" size="40" tabindex="70" /><br /><span style="font-style: italic;">Enter values separated by commas.</span></p>
             <p>
-                <button id="cancelCardset" tabindex="90"><i class="fa fa-remove fa fa-large"></i> Cancel</button>
-                <button id="applyCardset" tabindex="80"><i class="fa fa-ok fa-large"></i> <span style="font-weight: bold;">Apply</span></button>
+                <button id="cancelCardset" tabindex="90"><i class="fa fa-remove fa fa-lg"></i> Cancel</button>
+                <button id="applyCardset" tabindex="80"><i class="fa fa-check fa-lg"></i> <span style="font-weight: bold;">Apply</span></button>
             </p>
         </div>
 
