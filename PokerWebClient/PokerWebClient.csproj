@@ -28,6 +28,7 @@
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,23 +50,11 @@
   <ItemGroup>
     <Content Include="CardClient.js" />
     <Content Include="css\baseline.css" />
-    <Content Include="css\font-awesome-ie7.css" />
-    <Content Include="css\font-awesome.css" />
     <Content Include="css\style.css" />
-    <Content Include="font\fontawesome-webfont.svg" />
     <Content Include="index.html" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="font\fontawesome-webfont.eot" />
-    <Content Include="font\fontawesome-webfont.ttf" />
-    <Content Include="font\fontawesome-webfont.woff" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\PublishProfiles\KYWADev02.pubxml" />
-    <None Include="Properties\PublishProfiles\Local Deployment.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
