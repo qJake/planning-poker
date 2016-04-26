@@ -635,7 +635,7 @@ function updateView(data)
                 // If we haven't flipped yet, and this client has voted already, and we're not a spectator, add the option to undo your vote.
                 if (!e.Flipped && hasUserVoted(e.Votes, clientID) && !isSpectator)
                 {
-                    optionContainer.append('<button id="undoVote"><i class="fa fa-download-alt fa-lg"></i> Undo Vote</button>');
+                    optionContainer.append('<button id="undoVote"><i class="fa fa-undo fa-lg"></i> Undo Vote</button>');
                     if (e.Votes.length == clientListCache.length)
                     {
                         optionContainer.find('#undoVote').attr('disabled', 'disabled');
